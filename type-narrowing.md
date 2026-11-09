@@ -6,9 +6,9 @@ Type narrowing is simply the mechanism TypeScript uses to refine a broad type in
 
 The three most common guard checks we use every day are:
 
-1. **`typeof`**: Perfect for checking primitive types like strings, numbers, and booleans.
-2. **`instanceof`**: Used to check if an object is an instance of a specific class.
-3. **`in` operator**: Checks whether a specific property key exists inside an object structure.
+1. **typeof**: Perfect for checking primitive types like strings, numbers, and booleans.
+2. **instanceof**: Used to check if an object is an instance of a specific class.
+3. **in operator**: Checks whether a specific property key exists inside an object structure.
 
 Here is how these guard checks look in practice:
 
