@@ -12,24 +12,16 @@ function processInput(input: string | number | boolean): string | number {
   if (typeof input === "number") {
     return input * 10;
   }
-  if (typeof input === "boolean") {
-    return input ? "Active" : "Inactive";
-  }
-  return input;
+  return input ? "Active" : "Inactive";
 }
 
-function formatCoordinate(
-  coordinate: readonly [number, number, string],
-): string {
+function formatCoordinate(coordinate: readonly [number, number, string]): string {
   const [latitude, longitude, locationName] = coordinate;
   return `Location: ${locationName} (${latitude}, ${longitude})`;
 }
 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
-  return arrays.reduce(
-    (accumulator, currentArray) => accumulator.concat(currentArray),
-    [] as T[],
-  );
+  return arrays.reduce((accumulator, currentArray) => accumulator.concat(currentArray), [] as T[]);
 }
 
 interface Course {
@@ -39,9 +31,7 @@ interface Course {
 }
 
 function getPopularCourses(courses: Course[], minStudents: number): Course[] {
-  return courses.filter(
-    (course) => course.isPublished && course.students >= minStudents,
-  );
+  return courses.filter((course) => course.isPublished && course.students >= minStudents);
 }
 
 function pluckValues<T, K extends keyof T>(items: T[], key: K): T[K][] {

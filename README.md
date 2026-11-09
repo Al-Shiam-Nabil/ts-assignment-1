@@ -18,4 +18,4 @@ This repository contains my solutions for the B8A1 assignment covering TypeScrip
 5. Interface-based Data Filtering (Course)
 6. Generic Property Extraction with keyof Constraint
 7. Object-Oriented Programming (OOP) with Access Modifiers (Employee & Manager)
-8. Async Age Validation using Promise<string> and setTimeout
+8. Async Age Validation using `Promise<string>` and setTimeout

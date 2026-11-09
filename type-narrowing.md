@@ -1,16 +1,16 @@
 # Demystifying Type Narrowing in TypeScript
 
-When building applications with TypeScript, you often run into scenarios where a variable can accept multiple data types using union types like string | number. While union types are super helpful, TypeScript won't let you run string-specific methods on a variable unless it's completely sure it's a string. This is where Type Narrowing comes into play.
+When working with union types like string or number, TypeScript requires you to refine the variable type before calling type-specific methods. This essential process is known as type narrowing.
 
-Type narrowing is simply the mechanism TypeScript uses to refine a broad type into a specific type based on runtime checks. The compiler analyzes your control flow, so when you write conditional checks, it automatically narrows down the type inside that specific code block.
+Type narrowing allows the compiler to inspect runtime conditions and automatically narrow down a broad union type into a specific type within conditional code blocks.
 
-The three most common guard checks we use every day are:
+The three primary checks used in day-to-day development are:
 
-1. **typeof**: Perfect for checking primitive types like strings, numbers, and booleans.
-2. **instanceof**: Used to check if an object is an instance of a specific class.
-3. **in operator**: Checks whether a specific property key exists inside an object structure.
+1. typeof: Used to verify primitive types like string, number, or boolean.
+2. instanceof: Checks whether an object is created from a specific class constructor.
+3. in operator: Checks whether a specific property exists inside an object.
 
-Here is how these guard checks look in practice:
+Here is how type narrowing works in practice:
 
 ```typescript
 // 1. Using typeof for primitives
@@ -40,7 +40,7 @@ function getSound(animal: Dog | Cat): string {
   return animal.meow();
 }
 
-// 3. Using the 'in' operator for object properties
+// 3. Using the in operator for object properties
 type Admin = { name: string; permissions: string[] };
 type Guest = { name: string };
 
@@ -51,3 +51,7 @@ function checkAccess(user: Admin | Guest): boolean {
   return false;
 }
 ```
+
+## Conclusion
+
+Type narrowing lets TypeScript follow the same checks we already write at runtime. Use typeof for primitives, instanceof for class instances, and the in operator for object shapes. With these guards, union types stay flexible while every branch remains fully type-safe, which catches mistakes during compilation instead of in production.

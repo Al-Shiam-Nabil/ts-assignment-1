@@ -1,23 +1,29 @@
-# Type Aliases vs Interface in TypeScript: Which One Should You Pick?
+# Type Aliases vs Interfaces in TypeScript
 
-When I first started learning TypeScript, one of the biggest questions on my mind was whether to use type or interface. At first glance, both seem to do almost the exact same job—defining the shape of an object. But once you work on real projects, the subtle differences become clear.
+When building applications in TypeScript, one of the first design decisions you make is choosing between type aliases and interfaces. Both of these features allow us to define custom object shapes, but they have key differences in flexibility and OOP features.
 
-The main difference comes down to declaration merging and flexibility. Interfaces can be declared multiple times with the same name, and TypeScript will automatically merge them together into a single structure. On the other hand, type aliases cannot be redeclared once created. Also, interfaces are mainly meant for defining object structures and OOP patterns with the extends keyword, while type aliases are far more flexible because they can handle primitive values, unions, and tuples directly using intersection (&) operators.
+The main difference lies in declaration merging and syntax. An interface can be declared multiple times with the exact same name, and TypeScript will automatically merge all those properties into one single structure. A type alias cannot be redeclared once created. Moreover, type aliases are great for defining union types, primitive aliases, and complex tuples, whereas interfaces focus heavily on object structures and class inheritance using the extends keyword.
 
-Here is a quick look at how they look in practice:
+Here is a practical look at how both look in code:
 
 ```typescript
-// Interface with declaration merging and extension
+// Interface declaration merging
 interface User {
   id: number;
+}
+interface User {
   name: string;
 }
 
+// Interface extension
 interface AdminUser extends User {
   permissions: string[];
 }
 
-// Type alias handling unions and intersections
+// Type alias handling unions
 type ResponseStatus = "success" | "error" | "loading";
-type UserWithStatus = User & { status: ResponseStatus };
 ```
+
+## Conclusion
+
+Choose an interface when describing object shapes, building class contracts, or when a public library type may need declaration merging. Choose a type alias for unions, tuples, primitive aliases, or combining types with intersections. In practice, pick one default for objects, stay consistent across the project, and reach for the other only when its specific feature is needed.
